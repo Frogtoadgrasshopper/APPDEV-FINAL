@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520" role="img" aria-labelledby="title">
+  <title id="title">Cream founders week hoodie</title>
+  <rect width="520" height="520" rx="28" fill="#f7fbff"/>
+  <path d="M130 154c18-58 242-58 260 0l-46 88v190H176V242l-46-88z" fill="#f2e2c4"/>
+  <path d="M191 159c19-34 119-34 138 0-28 31-110 31-138 0z" fill="#9b6b43"/>
+  <path d="M147 170l29 72M373 170l-29 72" stroke="#e63946" stroke-width="18" stroke-linecap="round"/>
+  <path d="M214 307h92c13 0 24 11 24 24v37H190v-37c0-13 11-24 24-24z" fill="#9b6b43" opacity=".25"/>
+  <text x="260" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#10232b">1964</text>
+  <path d="M211 392h98" stroke="#e63946" stroke-width="12" stroke-linecap="round"/>
+</svg>
