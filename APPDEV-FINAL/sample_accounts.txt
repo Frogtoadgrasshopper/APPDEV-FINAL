@@ -1,0 +1,23 @@
+CampusThread Hoodies - Sample User Accounts
+
+Seller/Admin Accounts
+
+1. Super Admin
+   Email: admin@campusthread.test
+   Password: Admin@123
+   Access: Seller admin dashboard, user management, product management, reports
+
+2. Seller Manager
+   Email: seller@campusthread.test
+   Password: Seller@123
+   Access: Seller admin dashboard, user management, product management, reports
+
+Buyer Account
+
+3. Sample Buyer
+   Email: buyer@campusthread.test
+   Password: Buyer@123
+   Access: Store, cart, checkout, payment page
+
+Note:
+Replace or add accounts before final submission if your teacher requires real group member testing accounts.
