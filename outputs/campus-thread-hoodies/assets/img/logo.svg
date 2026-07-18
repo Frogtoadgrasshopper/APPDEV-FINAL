@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Group 4 CampusThread logo</title>
+  <desc id="desc">A shield logo with a hoodie mark and Group 4 text.</desc>
+  <rect width="160" height="160" rx="24" fill="#10232b"/>
+  <path d="M30 30h100v48c0 28-18 44-50 58-32-14-50-30-50-58V30z" fill="#f7fbff"/>
+  <path d="M48 55c9-15 55-15 64 0l-12 20v37H60V75L48 55z" fill="#006d77"/>
+  <path d="M62 58c5-10 31-10 36 0-8 7-28 7-36 0z" fill="#10232b"/>
+  <path d="M66 91h28v15H66z" fill="#ffb703"/>
+  <path d="M48 55l12 20M112 55l-12 20" stroke="#ffb703" stroke-width="5" stroke-linecap="round"/>
+  <text x="80" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#10232b">G4</text>
+</svg>
