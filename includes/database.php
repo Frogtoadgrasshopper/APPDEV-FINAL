@@ -27,7 +27,6 @@ function db() {
 
         $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         return $pdo;
-    }
 
 function initialize_sqlite_database(PDO $pdo): void
 {
