@@ -26,8 +26,8 @@ define('MAIL_FROM', getenv('MAIL_FROM') ?: 'no-reply@campusthread.test');
 // Local demo uses SQLite. For hosting, set DB_DRIVER=mysql and import
 // database/university_hoodies_mysql.sql into your hosting MySQL database.
 define('DB_DRIVER', getenv('DB_DRIVER') ?: 'sqlite');
-define('DB_PATH', __DIR__ . '/../database/campus_thread_demo.sqlite');
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_PORT', getenv('DB_PORT') ?: '3306');
 define('DB_NAME', getenv('DB_NAME') ?: 'campus_thread_hoodies');
 define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') ?: '');
