@@ -9,8 +9,16 @@ function db() {
         return $pdo;
     }
 
-    if (DB_DRIVER === 'mysql') {
-        $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
+    $driver = defined('DB_DRIVER') ? DB_DRIVER : 'sqlite';
+    $host = defined('DB_HOST') ? DB_HOST : 'localhost';
+    $port = defined('DB_PORT') ? DB_PORT : '3306';
+    $name = defined('DB_NAME') ? DB_NAME : 'campus_thread_hoodies';
+    $user = defined('DB_USER') ? DB_USER : 'root';
+    $pass = defined('DB_PASS') ? DB_PASS : '';
+    $charset = defined('DB_CHARSET') ? DB_CHARSET : 'utf8mb4';
+
+    if ($driver === 'mysql') {
+        $dsn = 'mysql:host=' . $host . ';port=' . $port . ';dbname=' . $name . ';charset=' . $charset;
 
         $sslCa = getenv('DB_SSL_CA');
         if (!$sslCa) {
@@ -25,8 +33,26 @@ function db() {
             PDO::MYSQL_ATTR_SSL_CA => $sslCa,
         ];
 
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+        $pdo = new PDO($dsn, $user, $pass, $options);
         return $pdo;
+    }
+
+    $databaseDir = __DIR__ . '/../database';
+    if (!is_dir($databaseDir)) {
+        mkdir($databaseDir, 0777, true);
+    }
+
+    $sqlitePath = defined('DB_PATH') ? DB_PATH : ($databaseDir . '/campus_thread_demo.sqlite');
+
+    $pdo = new PDO('sqlite:' . $sqlitePath);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo->exec('PRAGMA foreign_keys = ON');
+
+    initialize_sqlite_database($pdo);
+
+    return $pdo;
+}
 
 function initialize_sqlite_database(PDO $pdo): void
 {
