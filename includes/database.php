@@ -3,38 +3,31 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../config/config.php';
 
-function db(): PDO
-{
+function db() {
     static $pdo = null;
-
-    if ($pdo instanceof PDO) {
+    if ($pdo !== null) {
         return $pdo;
     }
 
     if (DB_DRIVER === 'mysql') {
         $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, [
+
+        $sslCa = getenv('DB_SSL_CA');
+        if (!$sslCa) {
+            $sslCa = file_exists('/etc/ssl/certs/ca-certificates.crt')
+                ? '/etc/ssl/certs/ca-certificates.crt'
+                : '/etc/ssl/cert.pem';
+        }
+
+        $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]);
+            PDO::MYSQL_ATTR_SSL_CA => $sslCa,
+        ];
 
+        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         return $pdo;
     }
-
-    $databaseDir = dirname(DB_PATH);
-    if (!is_dir($databaseDir)) {
-        mkdir($databaseDir, 0775, true);
-    }
-
-    $pdo = new PDO('sqlite:' . DB_PATH, null, null, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]);
-    $pdo->exec('PRAGMA foreign_keys = ON');
-    initialize_sqlite_database($pdo);
-
-    return $pdo;
-}
 
 function initialize_sqlite_database(PDO $pdo): void
 {
